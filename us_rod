@@ -1,0 +1,78 @@
+// Rodrigo's US International layout
+// Variant of the US International with AltGr for dead keys
+// Modifications make writing portuguese easier while keeping most of
+// the programming goodness of the US layout and using all 105 keys of
+// the ISO keyboard
+
+partial alphanumeric_keys 
+xkb_symbols "basic" {
+    include "shift(both_capslock)"
+    include "ctrl(nocaps)"
+    include "us(intl)"
+ 
+    name[Group1]="English (Rod)";
+ 
+
+    // -- FIRST ROW --
+
+    // fix US international dead keys to be active on AltGr only
+    key <TLDE> { [    grave, asciitilde,  dead_grave,   dead_tilde      ] };
+    key <AE01> { [	   1,     exclam,    onesuperior,   exclamdown ] };
+    // ...
+    key <AE05> { [	   5,    percent,      EuroSign,    U2030  ] };
+    key <AE06> { [    6, dead_circumflex,   asciicircum,    onequarter] };
+    key <AE07> { [	   7,  ampersand,      infinity,  onehalf ] };
+    key <AE08> { [	   8,   asterisk, multiply,      threequarters ] };
+    // ...
+    // degrees on AltGr-Shift-0 (it was on the "portuguese" key)
+    key <AE10> { [	   0, parenright, rightsinglequotemark, degree ] };
+    // add en- and em-dash to the dashes key
+    key <AE11> { [ minus,           underscore,     emdash,      endash ] };
+    key <AE12> { [     equal,       plus,  notequal,    plusminus] };
+
+
+    // -- SECOND ROW --
+
+    // add trademark symbol in the t
+    key <AD01> { [	   q,          Q,    agrave,       Agrave ] };
+    key <AD02> { [	    w,     W,         Greek_omega,      Greek_OMEGA ] };
+    // ...
+    key <AD05> { [	   t,          T,         trademark,    Greek_tau ] };
+    // ...
+    key <AD10> { [	   p,          P,    Greek_pi,       Greek_PI ] };
+
+    
+    // -- THIRD ROW --
+
+    key <AC02> { [	   s,          S,        section,       Greek_SIGMA ] };
+    // ...
+    key <AC04> { [	   f,          F,        function,    integral ] };
+    key <AC05> { [	   g,          G,        copyright,       Greek_gamma ] };
+    key <AC06> { [	   h,          H,         leftarrow,    Greek_theta ] };
+    key <AC07> { [        j, J,           downarrow,   idiaeresis      ] };
+    key <AC08> { [	   k,          K,       uparrow,    K ] };
+    key <AC09> { [	   l,          L,       rightarrow,     Greek_lambda ] };
+    key <AC10> { [ semicolon,      colon,   ellipsis,  approxeq ] };
+    key <AC11> { [apostrophe,quotedbl,    dead_acute,   dead_diaeresis  ] };
+    // the useless key next to enter becomes the "portuguese" key
+    key <BKSL> { [ dead_tilde,  dead_circumflex,       masculine,       ordfeminine ] };
+ 
+
+    // -- FOURTH ROW --
+
+    // backslash between shift and Z, adding the same extras as the UK layout
+    key <LSGT> { [ backslash,   bar,            notsign,      brokenbar ] };
+    // put oe next to ae
+    key <AB02> { [	   x,          X,             oe,               OE ] };
+    // c cedilla goes in the C
+    key <AB03> { [	   c,          C,     ccedilla,             Ccedilla ] };
+    key <AB04> { [	   v,          V,      squareroot,           Greek_alpha ] };
+    key <AB05> { [	   b,          B,     ssharp,        Greek_beta ] };
+    // ...
+    key <AB08> { [     comma,       less,      lessthanequal,    dagger ] };
+    key <AB09> { [    period,    greater, greaterthanequal,       doubledagger ] };
+    key <AB10> { [     slash,   question,  division,     questiondown] };
+ 
+ 
+ 
+};
