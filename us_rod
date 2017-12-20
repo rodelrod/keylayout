@@ -20,7 +20,7 @@ xkb_symbols "basic" {
     key <AE01> { [	   1,     exclam,    onesuperior,   exclamdown ] };
     // ...
     key <AE05> { [	   5,    percent,      EuroSign,    U2030  ] };
-    key <AE06> { [    6, dead_circumflex,   asciicircum,    onequarter] };
+    key <AE06> { [    6,   asciicircum,  dead_circumflex,  onequarter] };
     key <AE07> { [	   7,  ampersand,      infinity,  onehalf ] };
     key <AE08> { [	   8,   asterisk, multiply,      threequarters ] };
     // ...
