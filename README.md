@@ -1,14 +1,22 @@
 Installation
 ============
 
-Run `sudo install.sh`
+This installation only works on Ubuntu 16.06 LTS and distributions
+that have their xkb layout files in the same location.
 
-The current installer replaces the xkb keyboard layout registration file
-(`evdev.xml`) with its own, based on Ubuntu 16.06 LTS. You are better off not
-using this installer in your own setup  unless you have a pristine Ubuntu 16.06
-environment.
+First you generate an `evdev.xml` file locally. This file is based on the
+current `evdev.xml` file in your system with the added support for the 
+`pt_rod` and `us_rod` layouts.
 
-A better version of the installer would inject the new keyboard definitions
-into the existing evdev.xml file.
+```sh
+sudo ./generate_evdev.py
+```
+
+Then you run `install.sh` to create the soft links from the appropriate 
+XKB config location to the files in this script's directory.
+
+```sh
+Run `sudo ./install.sh`
+```
 
 All the replaced files are backed up at `<original_dir>/<original_filename>.bkp`.
