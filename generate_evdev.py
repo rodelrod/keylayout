@@ -56,7 +56,15 @@ us_rod = ET.fromstring("""
 </layout>
 """)
 
-layouts.append(pt_rod)
-layouts.append(us_rod)
+new_layouts = {
+    'pt_rod': pt_rod,
+    'us_rod': us_rod,
+}
+
+for nl in new_layouts.keys():
+    nl_element = layouts.find("./layout/configItem[name='%s']/.." % (nl,))
+    if nl_element is not None:
+        layouts.remove(nl_element)
+    layouts.append(new_layouts[nl])
 
 tree.write(local_evdev)
