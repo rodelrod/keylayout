@@ -6,7 +6,7 @@ xkb_symbols "basic" {
     include "pt(basic)"
 
 
-    name[Group1]="Portugal - Custom(Rod)";
+    name[Group1]="Portuguese (PT, Custom by Rod)";
 
     key <AE11>  { [apostrophe,   question,    grave, questiondown ] };
 

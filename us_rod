@@ -10,7 +10,7 @@ xkb_symbols "basic" {
     include "ctrl(nocaps)"
     include "us(intl)"
  
-    name[Group1]="English (Rod)";
+    name[Group1]="English (US, Custom by Rod)";
  
 
     // -- FIRST ROW --
