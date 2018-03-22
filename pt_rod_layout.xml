@@ -1,0 +1,11 @@
+    <layout>
+       <configItem>
+         <name>pt_rod</name>
+         <shortDescription>pt</shortDescription>
+         <description>Portuguese (PT, Custom by Rod)</description>
+         <languageList>
+            <iso639Id>por</iso639Id>
+         </languageList>
+       </configItem>
+       <variantList />
+    </layout>
