@@ -19,8 +19,11 @@ if os.getuid() != 0:
     print("Please run as root.")
     sys.exit()
 if not os.path.exists(evdev_file):
-    print("Your system must have a `evdev.xml` file.")
-    sys.exit()
+    if os.path.exists(evdev_file + ".bkp"):
+        shutil.copy(evdev_file + ".bkp", evdev_file)
+    else:
+        print("Your system must have a `evdev.xml` file.")
+        sys.exit()
 if os.path.exists(local_evdev):
     shutil.move(local_evdev, local_evdev + ".%s.bkp" % (timestamp,))
 
@@ -33,7 +36,7 @@ pt_rod = ET.fromstring("""
      <configItem>
        <name>pt_rod</name>
        <shortDescription>ptrod</shortDescription>
-       <description>Portugal (Rod)</description>
+       <description>Rod (PT based)</description>
        <languageList>
           <iso639Id>por</iso639Id>
        </languageList>
@@ -47,7 +50,21 @@ us_rod = ET.fromstring("""
      <configItem>
        <name>us_rod</name>
        <shortDescription>usrod</shortDescription>
-       <description>English (Rod)</description>
+       <description>Rod (US based)</description>
+       <languageList>
+          <iso639Id>eng</iso639Id>
+       </languageList>
+     </configItem>
+     <variantList />
+</layout>
+""")
+
+gb_rod = ET.fromstring("""
+<layout>
+     <configItem>
+       <name>gb_rod</name>
+       <shortDescription>gbrod</shortDescription>
+       <description>Rod (UK based)</description>
        <languageList>
           <iso639Id>eng</iso639Id>
        </languageList>
@@ -59,6 +76,7 @@ us_rod = ET.fromstring("""
 new_layouts = {
     'pt_rod': pt_rod,
     'us_rod': us_rod,
+    'gb_rod': gb_rod,
 }
 
 for nl in new_layouts.keys():

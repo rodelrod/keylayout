@@ -1,7 +1,7 @@
 Installation
 ============
 
-This installation only works on Ubuntu 16.06 LTS and distributions
+This installation only works on Ubuntu 16.04 LTS and distributions
 that have their xkb layout files in the same location.
 
 First you generate an `evdev.xml` file locally. This file is based on the

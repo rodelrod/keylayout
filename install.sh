@@ -22,3 +22,8 @@ if [[ -e $XKBDIR/symbols/us_rod ]]; then
     mv $XKBDIR/symbols/us_rod $XKBDIR/symbols/us_rod.$TIMESTAMP.bkp;
 fi
 ln -s $SCRIPTDIR/us_rod $XKBDIR/symbols/us_rod
+
+if [[ -e $XKBDIR/symbols/gb_rod ]]; then
+    mv $XKBDIR/symbols/gb_rod $XKBDIR/symbols/gb_rod.$TIMESTAMP.bkp;
+fi
+ln -s $SCRIPTDIR/gb_rod $XKBDIR/symbols/gb_rod
