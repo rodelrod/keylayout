@@ -1,16 +1,16 @@
 // Rodrigo's US International layout
 // Variant of the US International with AltGr for dead keys
 // Modifications make writing portuguese easier while keeping most of
-// the programming goodness of the US layout and using all 105 keys of
-// the ISO keyboard
+// the programming goodness of the US layout, either using all 105 keys of
+// the ISO keyboard or the 104 keys of the ANSI. 
 
-partial alphanumeric_keys 
+default partial alphanumeric_keys 
 xkb_symbols "basic" {
+
     include "shift(both_capslock)"
     include "ctrl(nocaps)"
     include "us(intl)"
- 
-    name[Group1]="English (US, Custom by Rod)";
+    name[Group1]= "English (US ISO, Custom by Rod)";
  
 
     // -- FIRST ROW --
@@ -72,4 +72,16 @@ xkb_symbols "basic" {
     key <AB08> { [                 comma,                  less,          lessthanequal,              dagger ] };
     key <AB09> { [                period,               greater,       greaterthanequal,        doubledagger ] };
     key <AB10> { [                 slash,              question,               division,        questiondown ] };
+};
+
+partial alphanumeric_keys
+xkb_symbols "ansi" {
+
+    include "us_rod(basic)"
+    name[Group1]= "English (US ANSI, Custom by Rod)";
+
+    // The LSGT key does not exist in the 104-keys ANSI keyboard, so we move the important stuff to the BKSL
+    key <BKSL> { [             backslash,                   bar,             dead_tilde,     dead_circumflex ] };
+    key <LSGT> { [             masculine,           ordfeminine,               notsign,            brokenbar ] };
+
 };
