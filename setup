@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Run with sudo!
+cd stow_setup && ./update_evdev /usr/share/X11/xkb/rules/evdev.xml

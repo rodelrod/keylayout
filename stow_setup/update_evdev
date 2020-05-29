@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+from __future__ import print_function
+from datetime import datetime
+import shutil
+import sys
+import xml.etree.ElementTree as ET
+
+
+def main():
+    evdev_path = parse_args()
+    evdev_file, backupfile_path = open_evdev_and_backup(evdev_path)
+    header = get_header(evdev_file)
+    evdev_file.close()
+    xmldoc = ET.parse(evdev_path)
+    root = xmldoc.getroot()
+    layouts = root.find('layoutList')
+    remove_matching_layouts(layouts, 'us_rod')
+    layout_to_inject = ET.parse('us_rod_layout.xml').getroot()
+    layouts.append(layout_to_inject)
+    write_file(evdev_path, header, root)
+
+
+def parse_args():
+    if len(sys.argv) < 2:
+        print("Usage: ./update_evdev EVDEV_PATH", file=sys.stderr)
+
+    evdev_path = sys.argv[1]
+    return evdev_path
+
+
+def open_evdev_and_backup(evdev_path):
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    backupfile_path = "%s.%s" % (evdev_path, timestamp)
+    try:
+        evdev_file = open(evdev_path, 'r')
+    except:
+        print(
+            "'%s' does not exist, "
+            "try '/usr/share/X11/xkb/rules/evdev.xml'" % evdev_path,
+            file=sys.stderr
+        )
+        raise
+    else:
+        shutil.copy(evdev_path, backupfile_path)
+    return evdev_file, backupfile_path
+
+
+def get_header(evdev_file):
+    """Extract file header that is ignored by XML parser"""
+    header = []
+    for line in evdev_file.readlines():
+        if line.strip().startswith("<xkbConfigRegistry"):
+            break
+        header.append(line)
+    return header
+
+
+def remove_matching_layouts(layouts, layout_name):
+    """Mutates layouts element, removing previously added layouts"""
+    matching_layouts = []
+    for layout in layouts:
+        if layout.find("configItem[name='%s']" % layout_name) is not None:
+            matching_layouts.append(layout)
+    for matching_layout in matching_layouts:
+        layouts.remove(matching_layout)
+
+
+def write_file(evdev_path, header, root):
+    evdev_file = open(evdev_path, 'w')
+    evdev_file.writelines(header)
+    evdev_file.write(ET.tostring(root, encoding="utf-8"))
+    evdev_file.close()
+
+
+if __name__ == '__main__':
+    main()
