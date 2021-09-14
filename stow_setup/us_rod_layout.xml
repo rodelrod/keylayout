@@ -2,18 +2,11 @@
        <configItem>
          <name>us_rod</name>
          <shortDescription>en</shortDescription>
-         <description>English (US ISO, Custom by Rod)</description>
+         <description>English (US Int AltGr, Custom by Rod)</description>
          <languageList>
             <iso639Id>eng</iso639Id>
          </languageList>
        </configItem>
-       <variantList>
-         <variant>
-           <configItem>
-             <name>ansi</name>
-             <description>English (US ANSI, Custom by Rod)</description>
-           </configItem>
-         </variant>
-       </variantList>
+       <variantList />
     </layout>
 

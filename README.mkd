@@ -25,4 +25,4 @@ In the layout definition's `shortDescription` tag, only some results are accepte
 such as "en" or "pt". If you pick, for example, "us", the keyboard icon in the panel
 indicator will still be active, but will have a dark background.
 
-To reload changes you must log in and out of the X session.
+To reload changes you must the X session (in Gnome: Alt-F2  r <Enter>)
